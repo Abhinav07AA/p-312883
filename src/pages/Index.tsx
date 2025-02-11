@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Header } from "@/components/layout/Header";
 import { Sidebar } from "@/components/filters/Sidebar";
@@ -32,12 +33,12 @@ const Index = () => {
     <div className="bg-[rgba(249,249,249,1)] min-h-screen flex flex-col">
       <Header />
 
-      <main className="flex flex-1 gap-5 p-6">
-        <div className="w-[17%]">
+      <main className="flex flex-col lg:flex-row flex-1 gap-5 p-4 md:p-6">
+        <div className="w-full lg:w-[280px] xl:w-[320px]">
           <Sidebar />
         </div>
 
-        <div className="w-[83%]">
+        <div className="w-full">
           <div className="flex flex-col">
             <h2 className="text-[#0B0B0B] text-[19px] font-medium leading-[1.1] tracking-[0.03px]">
               Equipment
@@ -46,7 +47,7 @@ const Index = () => {
               Total : 8
             </p>
 
-            <div className="grid grid-cols-3 gap-5 mt-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-5 mt-6">
               {equipmentData.map((equipment, index) => (
                 <EquipmentCard key={index} {...equipment} />
               ))}
@@ -59,3 +60,4 @@ const Index = () => {
 };
 
 export default Index;
+
