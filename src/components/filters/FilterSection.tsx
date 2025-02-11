@@ -6,7 +6,7 @@ interface FilterSectionProps {
   children: React.ReactNode;
   expanded?: boolean;
   onToggle?: () => void;
-  className?: string; // Added className prop
+  className?: string;
 }
 
 export const FilterSection: React.FC<FilterSectionProps> = ({
@@ -14,7 +14,7 @@ export const FilterSection: React.FC<FilterSectionProps> = ({
   children,
   expanded = true,
   onToggle,
-  className = "", // Default to empty string
+  className = "",
 }) => {
   return (
     <div className={`w-full ${className}`}>
@@ -33,4 +33,3 @@ export const FilterSection: React.FC<FilterSectionProps> = ({
     </div>
   );
 };
-

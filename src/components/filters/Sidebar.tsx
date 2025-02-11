@@ -1,7 +1,11 @@
-import React from "react";
+
+import React, { useState } from "react";
 import { FilterSection } from "./FilterSection";
+import * as Slider from "@radix-ui/react-slider";
 
 export const Sidebar = () => {
+  const [quantityValue, setQuantityValue] = useState([5]); // Default to middle value
+
   return (
     <aside className="bg-white flex flex-col w-full pt-4 pb-12 px-4">
       <h2 className="text-[#0B0B0B] text-base font-normal leading-[1.1] tracking-[0.08px]">
@@ -60,16 +64,28 @@ export const Sidebar = () => {
         </FilterSection>
 
         <FilterSection title="Quantity Available" className="mt-4">
-          <div className="relative flex flex-col items-stretch text-[10px] text-black font-normal whitespace-nowrap tracking-[0.15px] justify-center mt-3 pt-[5px] pb-6 px-10">
-            <div className="bg-[#F25921] z-0 flex min-h-1 w-full rounded-[100px]" />
-            <div className="absolute z-0 flex min-h-2 max-w-full w-[214px] gap-5 justify-between h-2 bottom-2 inset-x-0">
+          <div className="pt-6 pb-8 px-2">
+            <Slider.Root
+              className="relative flex items-center select-none touch-none w-full h-5"
+              value={quantityValue}
+              onValueChange={setQuantityValue}
+              max={10}
+              step={1}
+              aria-label="Quantity"
+            >
+              <Slider.Track className="bg-[#E5E5E5] relative grow rounded-full h-[3px]">
+                <Slider.Range className="absolute bg-[#F25921] rounded-full h-full" />
+              </Slider.Track>
+              <Slider.Thumb className="block w-5 h-5 bg-white border-2 border-[#F25921] rounded-full hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#F25921]" />
+            </Slider.Root>
+            <div className="flex justify-between mt-2 px-2">
               {[0, 2, 4, 6, 8, 10].map((value) => (
-                <div
+                <span
                   key={value}
-                  className="z-10 bg-black w-px pt-1.5 rounded-[1px]"
+                  className="text-[10px] text-black font-normal tracking-[0.15px]"
                 >
                   {value}kg
-                </div>
+                </span>
               ))}
             </div>
           </div>
