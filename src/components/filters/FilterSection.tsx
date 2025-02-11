@@ -1,3 +1,4 @@
+
 import React from "react";
 
 interface FilterSectionProps {
@@ -5,6 +6,7 @@ interface FilterSectionProps {
   children: React.ReactNode;
   expanded?: boolean;
   onToggle?: () => void;
+  className?: string; // Added className prop
 }
 
 export const FilterSection: React.FC<FilterSectionProps> = ({
@@ -12,9 +14,10 @@ export const FilterSection: React.FC<FilterSectionProps> = ({
   children,
   expanded = true,
   onToggle,
+  className = "", // Default to empty string
 }) => {
   return (
-    <div className="w-full">
+    <div className={`w-full ${className}`}>
       <div className="flex items-stretch gap-5 text-sm text-[#0B0B0B] font-medium tracking-[0.04px] justify-between">
         <h3 className="my-auto">{title}</h3>
         <button onClick={onToggle}>
@@ -30,3 +33,4 @@ export const FilterSection: React.FC<FilterSectionProps> = ({
     </div>
   );
 };
+
